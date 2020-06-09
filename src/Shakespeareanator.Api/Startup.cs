@@ -9,6 +9,13 @@ namespace Shakespeareanator.Api
 
     public class Startup
     {
+        #region Fields
+
+        private readonly string apiName;
+        private readonly string apiVersion;
+
+        #endregion
+
         public IConfiguration Configuration { get; }
 
         public Startup(IWebHostEnvironment env)
@@ -20,6 +27,9 @@ namespace Shakespeareanator.Api
               .AddEnvironmentVariables();
 
             Configuration = builder.Build();
+
+            apiName = Configuration.GetValue<string>("api:name");
+            apiVersion = Configuration.GetValue<string>("api:version");
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -30,12 +40,15 @@ namespace Shakespeareanator.Api
             // Register the Swagger generator
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo
+                c.SwaggerDoc(apiVersion, new OpenApiInfo
                 {
-                    Description = $"Welcome to the Shakespeareanator API Documentation.",
-                    Title = "Shakespeareanator",
-                    Version = "1"
+                    Description = $"Welcome to the {apiName} API Documentation.",
+                    Title = apiName,
+                    Version = apiVersion
                 });
+
+                //Add document filters
+                c.DocumentFilter<TagDescriptionsDocumentFilter>();
             });
         }
 
@@ -55,7 +68,7 @@ namespace Shakespeareanator.Api
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint($"/swagger/v1/swagger.json", "Shakespeareanator");
+                c.SwaggerEndpoint($"/swagger/{apiVersion}/swagger.json", apiName);
             });
         }
     }
