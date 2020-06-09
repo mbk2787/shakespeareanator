@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shakespeareanator.Api", "src\Shakespeareanator.Api\Shakespeareanator.Api.csproj", "{D7757B6C-5596-40D3-87FF-45E8C0FC84C0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shakespeareanator.Pokemon", "src\Clients\Shakespeareanator.Pokemon\Shakespeareanator.Pokemon.csproj", "{8236DE76-3EEC-4C91-843B-4C5E98A06B77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{183D1EAC-C395-45CB-BA58-A6C84550B997}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +19,18 @@ Global
 		{D7757B6C-5596-40D3-87FF-45E8C0FC84C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7757B6C-5596-40D3-87FF-45E8C0FC84C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7757B6C-5596-40D3-87FF-45E8C0FC84C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8236DE76-3EEC-4C91-843B-4C5E98A06B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8236DE76-3EEC-4C91-843B-4C5E98A06B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8236DE76-3EEC-4C91-843B-4C5E98A06B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8236DE76-3EEC-4C91-843B-4C5E98A06B77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8236DE76-3EEC-4C91-843B-4C5E98A06B77} = {183D1EAC-C395-45CB-BA58-A6C84550B997}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C02FBB0E-6EE3-407D-9A49-23DC5413AF3B}
 	EndGlobalSection
 EndGlobal
