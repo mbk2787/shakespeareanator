@@ -13,6 +13,10 @@ COPY ["Clients/Shakespeareanator.FunTranslations/Shakespeareanator.FunTranslatio
 COPY ["Clients/Shakespeareanator.Pokemon/Shakespeareanator.Pokemon.csproj", "Clients/Shakespeareanator.Pokemon/"]
 RUN dotnet restore "Shakespeareanator.Api/Shakespeareanator.Api.csproj"
 COPY . .
+
+WORKDIR "/src/Tests/Shakespeareanator.Tests"
+RUN dotnet test
+
 WORKDIR "/src/Shakespeareanator.Api"
 RUN dotnet build "Shakespeareanator.Api.csproj" -c Release -o /app/build
 
@@ -22,4 +26,5 @@ RUN dotnet publish "Shakespeareanator.Api.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Shakespeareanator.Api.dll"]
+#ENTRYPOINT ["dotnet", "Shakespeareanator.Api.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet Shakespeareanator.Api.dll
