@@ -15,7 +15,7 @@ jobs:
         HEROKU_API_KEY: ${{ '932a2e9f-83a8-49eb-8b23-9f66133505fa' }}
         APP_NAME: ${{ 'shakespeareanator' }}
       run: |
-        cd ./ASPNetCoreLabs/HerokuContainer
+        cd ./src
         docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
         heroku container:push web -a $APP_NAME
         heroku container:release web -a $APP_NAME
