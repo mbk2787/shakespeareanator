@@ -3,12 +3,21 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Logging;
+    using Shakespeareanator.Services;
 
     [ApiController]
     [Route("[controller]")]
     public class PokemonController : Controller
     {
+        #region Constants
+
+        private const string GetPokemonDescriptionByNameRoute = "{name}";
+
+        #endregion
+
         #region Fields
+
+        private readonly IShakespeareanatorService shakespeareanatorService;
 
         private readonly ILogger<PokemonController> logger;
 
@@ -16,16 +25,20 @@
 
         #endregion
 
-        public PokemonController(ILogger<PokemonController> logger, IConfiguration configuration)
+        public PokemonController(IShakespeareanatorService shakespeareanatorService, ILogger<PokemonController> logger, IConfiguration configuration)
         {
+            this.shakespeareanatorService = shakespeareanatorService;
             this.logger = logger;
             this.configuration = configuration;
         }
 
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet(GetPokemonDescriptionByNameRoute)]
+        public IActionResult Get(string name)
         {
-            return Ok();
+            // Get pokemon translated description
+            var result = shakespeareanatorService.GetShakespeareanPokemonDescription(name);
+
+            return Ok(result);
         }
     }
 }

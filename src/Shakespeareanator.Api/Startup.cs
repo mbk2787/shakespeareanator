@@ -6,6 +6,12 @@ namespace Shakespeareanator.Api
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.OpenApi.Models;
     using Prometheus;
+    using Shakespeareanator.FunTranslations;
+    using Shakespeareanator.FunTranslations.Interfaces;
+    using Shakespeareanator.Pokemon;
+    using Shakespeareanator.Pokemon.Interfaces;
+    using Shakespeareanator.Services;
+    using Shakespeareanator.Services.Implementations;
 
     public class Startup
     {
@@ -50,6 +56,15 @@ namespace Shakespeareanator.Api
                 //Add document filters
                 c.DocumentFilter<TagDescriptionsDocumentFilter>();
             });
+
+            // Register services
+            services.AddScoped<IPokemonService, PokemonService>();
+            services.AddScoped<IFunTranslationsService, FunTranslationsService>();
+            services.AddScoped<IShakespeareanatorService, ShakespeareanatorService>();
+
+            // Register clients
+            services.AddSingleton<IPokemonClient, PokemonClient>();
+            services.AddSingleton<IFunTranslationsClient, FunTranslationsClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

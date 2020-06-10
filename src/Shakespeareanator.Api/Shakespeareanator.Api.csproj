@@ -11,5 +11,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Shakespeareanator.Services\Shakespeareanator.Services.csproj" />
+  </ItemGroup>
+
 
 </Project>
