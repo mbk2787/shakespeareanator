@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Clients\Shakespeareanator.FunTranslations\Shakespeareanator.FunTranslations.csproj" />
+    <ProjectReference Include="..\Clients\Shakespeareanator.Pokemon\Shakespeareanator.Pokemon.csproj" />
+    <ProjectReference Include="..\Shakespeareanator.Utils\Shakespeareanator.Utils.csproj" />
+  </ItemGroup>
+
+</Project>
