@@ -6,13 +6,13 @@ on:
     - dev
 
 jobs:
-  build_icolors:
-    runs-on: ubuntu-16.04
+  build_shakespeareanator:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Build and deploy the Docker image
       env: 
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        HEROKU_API_KEY: ${{ '932a2e9f-83a8-49eb-8b23-9f66133505fa' }}
         APP_NAME: ${{ 'shakespeareanator' }}
       run: |
         cd ./ASPNetCoreLabs/HerokuContainer
