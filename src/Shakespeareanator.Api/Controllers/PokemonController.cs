@@ -7,6 +7,7 @@
     using Shakespeareanator.Services;
     using Shakespeareanator.Services.Models;
     using System;
+    using System.Diagnostics;
 
     [ApiController]
     [Route("[controller]")]
@@ -41,6 +42,11 @@
         [HttpGet(GetPokemonDescriptionByNameRoute)]
         public IActionResult Get(string name)
         {
+            // retrieve current activity id for correlation id
+            var correlationId = Activity.Current?.RootId;
+
+            logger.LogInformation($"Getting pokemon translation for '{name}'. [{correlationId}]");
+
             // Try to get translation value from cache
             if (!memoryCache.TryGetValue(name, out ShakespeareanatorResult result))
             {
@@ -49,7 +55,11 @@
 
                 // Set cache
                 memoryCache.Set(name, result, TimeSpan.FromHours(1));
+
+                logger.LogInformation($"Added '{name}' translation to the cache.");
             }
+
+            logger.LogInformation($"Translation for '{name}' pokemon successfully retrieved.");
 
             return Ok(result);
         }

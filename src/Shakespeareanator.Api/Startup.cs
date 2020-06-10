@@ -6,6 +6,7 @@ namespace Shakespeareanator.Api
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.OpenApi.Models;
     using Prometheus;
+    using Shakespeareanator.Api.Middlewares;
     using Shakespeareanator.FunTranslations;
     using Shakespeareanator.FunTranslations.Interfaces;
     using Shakespeareanator.Pokemon;
@@ -71,6 +72,9 @@ namespace Shakespeareanator.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // Use the exception middleware
+            app.UseExceptionProvider();
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
