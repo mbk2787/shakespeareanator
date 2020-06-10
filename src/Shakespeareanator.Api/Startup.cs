@@ -42,6 +42,7 @@ namespace Shakespeareanator.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddMemoryCache();
 
             // Register the Swagger generator
             services.AddSwaggerGen(c =>
