@@ -98,11 +98,11 @@ Ensure to have installed Docker, you can download it here:
 
 1. Locate src folder and build the image
 ```sh
-docker build
+docker build -t shakespeareanator .
 ```
 2. Run the image
 ```sh
-dotnet run
+docker run -d --name shakespeareanator_container shakespeareanator
 ```
 
 
