@@ -80,7 +80,7 @@ In order to run the application, please ensure to have installed on your machine
 ```sh
 git clone https://github.com/mbk2787/shakespeareanator.git
 ```
-2. Publish the app
+2. Locate src folder and publish the app
 ```sh
 dotnet publish -c Release
 ```
